@@ -11,12 +11,12 @@
     "http"
   ],
   "paths": {
-    "/posts/": {
+    "/api/posts/": {
       "get": {
         "tags": [
-          "Meta-Wall"
+          "搜尋"
         ],
-        "description": "搜尋貼文",
+        "description": "搜尋",
         "parameters": [
           {
             "name": "timeSort",
@@ -85,7 +85,7 @@
             }
           },
           "400": {
-            "description": "搜尋異常",
+            "description": "搜尋失敗",
             "schema": {
               "type": "array",
               "items": {
@@ -114,7 +114,7 @@
       },
       "post": {
         "tags": [
-          "Meta-Wall"
+          "新增貼文"
         ],
         "description": "新增貼文",
         "responses": {
@@ -131,34 +131,37 @@
                   },
                   "message": {
                     "type": "string",
-                    "example": "新增貼文成功"
+                    "example": "新增成功"
                   },
                   "post": {
-                    "type": "object",
-                    "properties": {
-                      "userName": {
-                        "type": "string",
-                        "example": "test"
-                      },
-                      "userPhoto": {
-                        "type": "string",
-                        "example": "http://example.com/photo.jpg"
-                      },
-                      "content": {
-                        "type": "string",
-                        "example": "這是一個測試貼文。"
-                      },
-                      "image": {
-                        "type": "string",
-                        "example": "http://example.com/image.jpg"
-                      },
-                      "_id": {
-                        "type": "string",
-                        "example": "662f9add59e17e0304572e6f"
-                      },
-                      "createdAt": {
-                        "type": "string",
-                        "example": "2024-04-29T13:04:29.084Z"
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": "662ec324ad9afd608b5c6d88"
+                        },
+                        "userName": {
+                          "type": "string",
+                          "example": "test"
+                        },
+                        "userPhoto": {
+                          "type": "string",
+                          "example": "http://example.com/photo.jpg"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "這是一個測試貼文。"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "http://nexample.com/image.jpg"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "example": "2024-02-28T21:44:04.703Z"
+                        }
                       }
                     }
                   }
@@ -182,7 +185,7 @@
                   },
                   "message": {
                     "type": "string",
-                    "example": "新增貼文失敗"
+                    "example": "新增失敗"
                   },
                   "errMsg": {
                     "type": "string",
