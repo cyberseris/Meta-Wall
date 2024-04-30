@@ -28,7 +28,7 @@ const searchController = async function (req, res, next) {
     try {
         post = await Post.find(keywordFilter).sort(timeSort);
 
-        return res.status(200).json({
+        res.status(200).json({
             success: true,
             message: "搜尋成功",
             post
@@ -45,7 +45,7 @@ const searchController = async function (req, res, next) {
 const postController = async function (req, res, next) {
     try {
         const newPost = await Post.create(req.body);
-        return res.status(200).json({
+        res.status(200).json({
             success: true,
             message: "新增貼文成功",
             post: newPost
