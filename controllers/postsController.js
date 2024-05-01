@@ -22,10 +22,16 @@ const getPostController = async function (req, res, next) {
     }
 
     if (req.query.Keyword) {
-        keywordFilter.content = new RegExp(req.query.Keyword)
+        const keywords = req.query.Keyword.split(' ');
+        const regexArray = keywords.map(keyword => ({ content: new RegExp(keyword) }))
+        keywordFilter.$or = regexArray;
     }
+
     try {
-        post = await Post.find(keywordFilter).sort(timeSort);
+        post = await Post.find(keywordFilter).populate({
+            path: 'userName',
+            select: 'userName photo'
+        }).sort(timeSort);
         res.status(200).json({
             success: true,
             message: "搜尋成功",

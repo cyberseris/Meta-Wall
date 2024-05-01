@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cors = require('cors');
 var indexRouter = require('./routes/index');
 const postRouter = require('./routes/posts');
+const userRouter = require('./routes/users');
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 const dotenv = require('dotenv');
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/', indexRouter);
 app.use('/api/posts', postRouter);
+app.use('/api/users', userRouter);
 app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = app;

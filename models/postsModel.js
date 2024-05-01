@@ -3,9 +3,9 @@ const postSchema = new mongoose.Schema(
   {
     userName: {
       type: String,
+      ref: 'user',
       required: [true, '貼文姓名未填寫']
     },
-
     userPhoto: {
       type: String,
       default: ""
@@ -22,9 +22,10 @@ const postSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-  },{
-    versionKey:false
-  }
+  }, {
+  versionKey: false,
+  strictPopulate: false
+}
 );
 const Post = mongoose.model('Post', postSchema);
 
