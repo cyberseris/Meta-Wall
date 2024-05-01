@@ -32,11 +32,18 @@ const getPostController = async function (req, res, next) {
             path: 'userName',
             select: 'userName photo'
         }).sort(timeSort);
-        res.status(200).json({
-            success: true,
-            message: "搜尋成功",
-            post
-        })
+        if (post.length) {
+            res.status(200).json({
+                success: true,
+                message: "搜尋成功",
+                post
+            })
+        } else {
+            res.status(200).json({
+                success: true,
+                message: "目前尚無動態，新增一則貼文吧!"
+            })
+        }
     } catch (err) {
         res.status(400).json({
             success: false,
