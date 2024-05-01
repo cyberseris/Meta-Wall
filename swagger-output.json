@@ -9,7 +9,7 @@
   "port": "{{PORT}}",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api/posts/": {
