@@ -131,7 +131,7 @@
               "properties": {
                 "userName": {
                   "type": "string",
-                  "example": "六角"
+                  "example": "663272d5917b29ff1a82fac2"
                 },
                 "userPhoto": {
                   "type": "string",
