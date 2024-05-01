@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Meta-Wall",
-    "description": "Description",
+    "description": "Meta-Wall API",
     "version": "1.0.0"
   },
   "host": "meta-wall.onrender.com",
