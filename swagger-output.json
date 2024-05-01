@@ -23,7 +23,7 @@
             "name": "timeSort",
             "in": "query",
             "type": "string",
-            "description": "ex: desc or monthDesc"
+            "description": "ex: desc or monthDesc, default: asc"
           },
           {
             "name": "Keyword",
