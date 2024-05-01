@@ -59,7 +59,11 @@
                         },
                         "userName": {
                           "type": "string",
-                          "example": "test"
+                          "example": {
+                            "_id": "663272d5917b29ff1a82fac2",
+                            "userName": "六角",
+                            "photo": "https://thumb.fakeface.rest/thumb_female_21_5a24gdhfjxnhzahsggbfchbsxnjjjjdxzmasnd3jx.jpg"
+                          }
                         },
                         "userPhoto": {
                           "type": "string",
@@ -176,7 +180,7 @@
                         },
                         "userName": {
                           "type": "string",
-                          "example": "test"
+                          "example": "663272d5917b29ff1a82fac2"
                         },
                         "userPhoto": {
                           "type": "string",
