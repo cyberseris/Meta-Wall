@@ -22,12 +22,14 @@
           {
             "name": "timeSort",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "description": "ex: desc or monthDesc"
           },
           {
             "name": "Keyword",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "description": "ex: 測試"
           }
         ],
         "responses": {
