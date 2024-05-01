@@ -5,7 +5,7 @@ const doc = {
     title: 'Meta-Wall',
     description: 'Description'
   },
-  host: 'localhost:3000'
+  host: 'localhost:3005'
 };
 
 const outputFile = './swagger-output.json';

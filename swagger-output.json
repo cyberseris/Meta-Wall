@@ -5,7 +5,8 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "meta-wall.onrender.com",
+  "port": "{{PORT}}",
   "basePath": "/",
   "schemes": [
     "http"
@@ -14,9 +15,9 @@
     "/api/posts/": {
       "get": {
         "tags": [
-          "搜尋"
+          "Posts - 搜尋貼文"
         ],
-        "description": "搜尋",
+        "description": "搜尋貼文 API",
         "parameters": [
           {
             "name": "timeSort",
@@ -114,9 +115,38 @@
       },
       "post": {
         "tags": [
-          "新增貼文"
+          "Posts - 新增貼文"
         ],
-        "description": "新增貼文",
+        "description": "新增貼文 API",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "資料格式",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string",
+                  "example": "六角"
+                },
+                "userPhoto": {
+                  "type": "string",
+                  "example": "http://example.com/photo.jpg"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "這是一篇前端貼文"
+                },
+                "image": {
+                  "type": "string",
+                  "example": "http://nexample.com/image.jpg"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "新增成功",
@@ -185,11 +215,11 @@
                   },
                   "message": {
                     "type": "string",
-                    "example": "新增失敗"
+                    "example": "新增貼文失敗"
                   },
                   "errMsg": {
                     "type": "string",
-                    "example": "errMsg"
+                    "example": "Post validation failed: content: Content 未填寫, userName: 貼文姓名未填寫"
                   }
                 }
               },
