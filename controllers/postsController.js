@@ -1,4 +1,6 @@
 const Post = require("../models/postsModel");
+const User = require("../models/usersModel");
+const { ObjectId } = require('mongodb');
 
 const getPostController = async function (req, res, next) {
     let post = "";
@@ -23,7 +25,7 @@ const getPostController = async function (req, res, next) {
 
     if (req.query.Keyword) {
         const keywords = req.query.Keyword.split(' ');
-        const regexArray = keywords.map(keyword => ({ content: new RegExp(keyword) }))
+        const regexArray = keywords.map(keyword => ({ content: new RegExp(keyword) }));
         keywordFilter.$or = regexArray;
     }
 
@@ -37,12 +39,12 @@ const getPostController = async function (req, res, next) {
                 success: true,
                 message: "搜尋成功",
                 post
-            })
+            });
         } else {
             res.status(200).json({
                 success: true,
-                message: "目前尚無動態，新增一則貼文吧!"
-            })
+                message: "沒有貼文"
+            });
         }
     } catch (err) {
         res.status(400).json({
@@ -55,18 +57,43 @@ const getPostController = async function (req, res, next) {
 
 const createPostController = async function (req, res, next) {
     try {
+        if (req.body.userName) {
+            let query = {};
+
+            if (ObjectId.isValid(req.body.userName)) {
+                query = { _id: req.body.userName };
+            } else {
+                query = { userName: req.body.userName };
+            }
+
+            const userResult = await User.find(query);
+
+            if (!userResult.length) {
+                res.status(200).json({
+                    success: true,
+                    message: "查無此使用者資料"
+                });
+            }
+
+            req.body.userName = userResult[0]._id;
+        }
+
+        if (req.body.content) {
+            req.body.content = req.body.content.trim();
+        }
+
         const newPost = await Post.create(req.body);
         res.status(200).json({
             success: true,
             message: "新增貼文成功",
             post: newPost
-        })
+        });
     } catch (err) {
         res.status(400).json({
             success: false,
             message: "新增貼文失敗",
             errMsg: err.message
-        })
+        });
     }
 };
 

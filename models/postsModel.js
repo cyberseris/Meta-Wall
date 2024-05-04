@@ -6,10 +6,6 @@ const postSchema = new mongoose.Schema(
       ref: 'user',
       required: [true, '貼文姓名未填寫']
     },
-    userPhoto: {
-      type: String,
-      default: ""
-    },
     content: {
       type: String,
       required: [true, 'Content 未填寫']
