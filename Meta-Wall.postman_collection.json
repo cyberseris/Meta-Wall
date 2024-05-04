@@ -1,17 +1,14 @@
 {
 	"info": {
-		"_postman_id": "4857ccd6-a177-4334-8551-519b4d4d8bb6",
+		"_postman_id": "4bcb376c-fe2e-42a2-8dfe-cba478cc70e5",
 		"name": "Meta-Wall",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34604243"
 	},
 	"item": [
 		{
-			"name": "https://meta-wall.onrender.com/api/posts",
+			"name": "取得貼文(由舊到新)",
 			"request": {
-				"auth": {
-					"type": "inherit"
-				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -31,38 +28,7 @@
 			"response": []
 		},
 		{
-			"name": "https://meta-wall.onrender.com/api/posts?timeSort=monthDesc&Keyword=測試",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://meta-wall.onrender.com/api/posts?timeSort=monthDesc&Keyword=測試",
-					"protocol": "https",
-					"host": [
-						"meta-wall",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"api",
-						"posts"
-					],
-					"query": [
-						{
-							"key": "timeSort",
-							"value": "monthDesc"
-						},
-						{
-							"key": "Keyword",
-							"value": "測試"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://meta-wall.onrender.com/api/posts?timeSort=desc",
+			"name": "取得貼文(由新到舊)",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -89,12 +55,12 @@
 			"response": []
 		},
 		{
-			"name": "https://meta-wall.onrender.com/api/posts?Keyword=測試",
+			"name": "搜尋貼文",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://meta-wall.onrender.com/api/posts?Keyword=測試",
+					"raw": "https://meta-wall.onrender.com/api/posts?Keyword=test",
 					"protocol": "https",
 					"host": [
 						"meta-wall",
@@ -108,7 +74,7 @@
 					"query": [
 						{
 							"key": "Keyword",
-							"value": "測試"
+							"value": "test"
 						}
 					]
 				}
@@ -116,13 +82,40 @@
 			"response": []
 		},
 		{
-			"name": "https://meta-wall.onrender.com/api/posts",
+			"name": "本月貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://meta-wall.onrender.com/api/posts?timeSort=monthDesc",
+					"protocol": "https",
+					"host": [
+						"meta-wall",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "timeSort",
+							"value": "monthDesc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增貼文",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n      \"userName\": \"六角\",\r\n      \"userPhoto\": \"http://example.com/photo3.jpg\",\r\n      \"content\": \"這是一篇前端貼文\",\r\n      \"image\": \"http://nexample.com/image3.jpg\"\r\n    }",
+					"raw": "{\"userName\":\"六角\",\"content\":\"這是一個防呆測試2貼文。\",\"image\":\"http://nexample.com/image.jpg\"}",
 					"options": {
 						"raw": {
 							"language": "json"
