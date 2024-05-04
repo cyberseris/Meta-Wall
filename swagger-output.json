@@ -65,10 +65,6 @@
                             "photo": "https://thumb.fakeface.rest/thumb_female_21_5a24gdhfjxnhzahsggbfchbsxnjjjjdxzmasnd3jx.jpg"
                           }
                         },
-                        "userPhoto": {
-                          "type": "string",
-                          "example": "http://example.com/photo.jpg"
-                        },
                         "content": {
                           "type": "string",
                           "example": "這是一個測試貼文。"
